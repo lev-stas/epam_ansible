@@ -1,0 +1,39 @@
+---
+- name: Install Apache Web Server
+  hosts: nodes
+
+  tasks:
+  - name: install httpd
+    yum:
+      name: httpd
+
+  - name: run httpd service
+    service:
+      name: httpd
+      state: started
+      enabled: yes
+
+  - name: get httpd service fact
+    service_facts:
+
+  - name: check httpd status
+    debug:
+      var: ansible_facts.services["httpd.service"]
+
+  - name: create index file
+    copy:
+      content: "Welcome to my web server"
+      dest: /var/www/html/index.html
+
+  - name: open 80 port
+    firewalld:
+      service: http
+      permanent: yes
+      state: enabled
+
+  - name: open 442 port
+    firewalld:
+      service: https
+      permanent: yes
+      state: enabled
+...

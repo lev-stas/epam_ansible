@@ -1,0 +1,10 @@
+---
+- name: Stop NemworkManafer service
+  hosts: nodes
+  
+  tasks:
+  - name: stop NM service
+    service:
+      name: NetworkManager
+      state: stopped
+...
