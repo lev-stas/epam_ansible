@@ -1,0 +1,15 @@
+---
+- name: Install MariaDB server
+  hosts: nodes
+  tasks:
+  - name: check if file exists
+    stat: 
+      path: /tmp/database
+    register: stat_result
+
+  - name: install MariaDB 
+    yum:
+      name: mariadb
+      state: present
+    when: stat_result.stat.exists
+...

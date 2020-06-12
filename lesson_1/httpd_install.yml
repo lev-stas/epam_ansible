@@ -31,7 +31,7 @@
       permanent: yes
       state: enabled
 
-  - name: open 442 port
+  - name: open 443 port
     firewalld:
       service: https
       permanent: yes

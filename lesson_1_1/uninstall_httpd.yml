@@ -1,0 +1,31 @@
+---
+- name: Uninstall Apache Web Server
+  hosts: nodes
+  tasks:
+  - name: stop httpd service
+    service:
+      name: httpd
+      state: stopped
+
+  - name: uninstall httpd
+    yum:
+      name: httpd
+      state: absent
+
+  - name: remove index.html file
+    file:
+      dest: /var/www/html/index.html
+      state: absent
+
+  - name: close 80 port
+    firewalld:
+      service: http
+      permanent: yes
+      state: disabled
+
+  - name: close 443 port
+    firewalld:
+      service: https
+      permanent: yes
+      state: disabled
+...
