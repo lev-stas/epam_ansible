@@ -1,6 +1,8 @@
 ---
 - name: FTP server installation and configuration
   hosts: nodes
+  vars_files: 
+  - vars/vsftpd_vars.yml 
   tasks:
   - name: install vsftpd
     yum:
@@ -18,4 +20,30 @@
       service: ftp
       state: enabled
       permanent: yes
+
+  - name: use templated config file
+    template:
+      src: vsftpd.j2
+      dest: /etc/vsftpd/vstpd.conf
+
+  - name: install packages for selinux
+    yum:
+      name: policycoreutils-python
+      state: installed
+
+  - name: give permissions on ftp folder
+    file:
+      path: /var/ftp/pub
+      mode: '0777'
+
+  - name: set SELinux context
+    sefcontext:
+      target: /var/ftp/pub
+      setype: public_content_t
+      state: present
+  - name: set ftpd_anon_write boolean
+    seboolean:
+      name: ftpd_anon_write
+      state: yes
+      persistent: yes
 ...
