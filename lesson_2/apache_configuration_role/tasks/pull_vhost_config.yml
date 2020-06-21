@@ -1,0 +1,17 @@
+---
+- name: create sites-available directory
+  file:
+    path: /etc/httpd/sites-available
+    state: directory
+
+- name: create sites-enabled directory
+  file:
+    path: /etc/httpd/sites-enabled
+    state: directory
+
+- name: pull vhost template
+  template:
+    src: my-site.j2
+    dest: /etc/httpd/sites-available/my-site.conf
+...
+

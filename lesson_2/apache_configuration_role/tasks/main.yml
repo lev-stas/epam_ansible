@@ -1,0 +1,24 @@
+---
+- name: install httpd
+  include: install_httpd.yml
+
+- name: run httpd
+  include: run_httpd_service.yml
+
+- name: set firewall
+  include: open_http_ports.yml
+
+- name: copy site content
+  include: copy_site_file.yml
+
+- name: set permissions
+  include: set_owner_and_permissions.yml
+
+- name: change apache config
+  include: change_apache_config.yml
+
+- name: VHost config
+  include: pull_vhost_config.yml
+
+- name: reload httpd
+  include: reload_apache.yml

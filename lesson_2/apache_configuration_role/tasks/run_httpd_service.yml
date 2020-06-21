@@ -1,0 +1,7 @@
+---
+- name: tun httpd service
+  service:
+    name: httpd
+    state: started
+    enabled: yes
+...

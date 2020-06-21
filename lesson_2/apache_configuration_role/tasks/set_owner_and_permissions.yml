@@ -1,0 +1,8 @@
+---
+- name: change owner of site directory
+  file:
+    path: /var/www/
+    owner: apache
+    group: apache
+    mode: '0755'
+...

@@ -1,0 +1,6 @@
+---
+- name: change httpd.conf file
+  lineinfile:
+    path: /etc/httpd/conf/httpd.conf
+    line: "IncludeOptional sites-enabled/*.conf"
+...

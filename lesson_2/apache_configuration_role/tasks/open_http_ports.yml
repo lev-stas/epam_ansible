@@ -1,0 +1,14 @@
+---
+- name: open http port
+  firewalld:
+    service: http
+    state: enabled
+    permanent: yes
+
+- name: open https port
+  firewalld:
+    service: https
+    state: enabled
+    permanent: yes
+
+...

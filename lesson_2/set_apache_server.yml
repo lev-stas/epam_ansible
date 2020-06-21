@@ -1,0 +1,7 @@
+---
+- name: Install and simple set apache web server
+  hosts: lamp
+
+  roles:
+  - apache_configuration_role
+...
