@@ -1,6 +1,9 @@
 ---
 - name: Install and simple set apache web server
-  hosts: lamp
+  become: True
+  become_method: sudo
+  become_user: root
+  hosts: nodes
 
   roles:
   - apache_configuration_role
