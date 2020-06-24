@@ -1,5 +1,9 @@
 ---
 - name: Install Apache Web Server
+  become: True
+  become_method: sudo
+  become_user: root
+  become_ask_pass: False
   hosts: nodes
 
   tasks:
