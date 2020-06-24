@@ -1,0 +1,29 @@
+---
+- name: install apache web server
+  become: True
+  become_method: sudo
+  become_user: root
+  hosts: nodes
+  tasks:
+  - name: install httpd package
+    yum:
+      name: httpd
+      state: installed
+  - name: open 80 port
+    firewalld:
+      service: http
+      permanent: yes
+      state: enabled
+
+  - name: open 443 port
+    firewalld:
+      service: https
+      permanent: yes
+      state: enabled
+
+  - name: run httpd service
+    service:
+      name: httpd
+      state: started
+      enabled: yes
+...

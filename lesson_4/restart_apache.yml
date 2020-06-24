@@ -1,0 +1,12 @@
+---
+- name: reload apache web server
+  become: True
+  become_method: sudo
+  become_user: root
+  hosts: nodes
+  tasks:
+  - name: reload httpd service
+    service:
+      name: httpd
+      state: reloaded
+...
