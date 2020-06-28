@@ -1,0 +1,6 @@
+1. Fix lamp.yml file to install custom facts
+2. Fix custom.fact file - httpd spelling
+3. Fix lamp.yml file - ftp service changed to mariadb in "start database server" play
+4. Fix file.yuml file to install custom facts
+5. Fix custom.fact samba package name
+6. Fix hw-playbook.yml samba firewalld service name
