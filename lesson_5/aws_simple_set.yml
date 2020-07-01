@@ -1,0 +1,9 @@
+---
+- name: aws simple set
+  gather_facts: False
+  hosts: localhost
+
+  roles: 
+  - aws_simple
+
+...

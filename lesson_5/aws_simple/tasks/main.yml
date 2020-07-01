@@ -1,0 +1,11 @@
+---
+- name: add aws user
+  include: create_user.yml
+
+- name: add users group
+  include: create_group.yml
+
+- name: launch ec2 instance
+  include: create_ec2.yml
+
+...

@@ -1,0 +1,13 @@
+---
+- name: reate ec2 t2.nano
+  ec2:
+    aws_access_key: "{{ aws_access_key_id }}"
+    aws_secret_key: "{{ aws_secret_access_key }}"
+    instance_type: t2.nano
+    image: ami-0ac80df6eff0e70b5
+    count: 1
+    key_name: T1000
+    region: us-east-1
+    state: present
+
+...
